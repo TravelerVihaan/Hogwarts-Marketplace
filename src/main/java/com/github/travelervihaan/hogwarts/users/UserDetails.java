@@ -4,6 +4,6 @@ import java.time.LocalDateTime;
 
 public class UserDetails {
 
-    private LocalDateTime registerDate;
+    private final LocalDateTime registerDate;
     private LocalDateTime lastActivity;
 }
