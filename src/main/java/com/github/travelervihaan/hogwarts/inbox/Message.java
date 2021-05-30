@@ -47,4 +47,14 @@ public class Message {
     public int hashCode() {
         return Objects.hash(sentDate, text);
     }
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "sentDate=" + sentDate +
+                ", from=" + from.getNickname() +
+                ", to=" + to.getNickname() +
+                ", text='" + text + '\'' +
+                '}';
+    }
 }

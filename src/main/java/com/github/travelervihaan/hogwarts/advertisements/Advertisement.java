@@ -21,9 +21,49 @@ public class Advertisement {
         this.sendDate = sendDate;
         this.advertisementType = advertisementType;
         this.text = text;
+        this.lastActivityDate = sendDate;
     }
 
+    public Advertisement(User author, LocalDateTime sendDate, AdvertisementType advertisementType, String text, LocalDateTime lastActivityDate, List<Comment> comments) {
+        this.author = author;
+        this.sendDate = sendDate;
+        this.advertisementType = advertisementType;
+        this.text = text;
+        this.lastActivityDate = lastActivityDate;
+        this.comments = comments;
+    }
 
+    public User getAuthor() {
+        return author;
+    }
+
+    public LocalDateTime getSendDate() {
+        return sendDate;
+    }
+
+    public AdvertisementType getAdvertisementType() {
+        return advertisementType;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public LocalDateTime getLastActivityDate() {
+        return lastActivityDate;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setLastActivityDate(LocalDateTime lastActivityDate) {
+        this.lastActivityDate = lastActivityDate;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
 
     @Override
     public String toString() {
