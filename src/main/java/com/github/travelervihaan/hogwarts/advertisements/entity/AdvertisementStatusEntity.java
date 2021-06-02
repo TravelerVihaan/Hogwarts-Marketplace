@@ -15,17 +15,15 @@ public class AdvertisementStatusEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_advertisement_status")
+    @Column(name = "id_adv_status")
     private Long id;
 
     @NotEmpty
-    @Column(name = "advertisement_status", nullable = false, unique = true)
+    @Column(name = "adv_status", nullable = false, unique = true)
     private String advertisementStatus;
 
     public AdvertisementStatusEntity() { }
-
-    public AdvertisementStatusEntity(Long id, String advertisementStatus) {
-        this.id = id;
+    public AdvertisementStatusEntity(String advertisementStatus) {
         this.advertisementStatus = advertisementStatus;
     }
 
