@@ -1,6 +1,6 @@
-package com.github.travelervihaan.hogwarts.inbox;
+package com.github.travelervihaan.hogwarts.inbox.domain;
 
-import com.github.travelervihaan.hogwarts.users.User;
+import com.github.travelervihaan.hogwarts.users.domain.User;
 
 import java.time.LocalDateTime;
 import java.util.Objects;

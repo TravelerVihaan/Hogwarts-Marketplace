@@ -1,6 +1,6 @@
-package com.github.travelervihaan.hogwarts.advertisements;
+package com.github.travelervihaan.hogwarts.advertisements.domain;
 
-import com.github.travelervihaan.hogwarts.users.User;
+import com.github.travelervihaan.hogwarts.users.domain.User;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -34,12 +34,12 @@ public class Comment {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Comment comment = (Comment) o;
-        return Objects.equals(author, comment.author) && Objects.equals(sendDate, comment.sendDate) && Objects.equals(text, comment.text);
+        return Objects.equals(author.getNickname(), comment.author.getNickname()) && Objects.equals(sendDate, comment.sendDate) && Objects.equals(text, comment.text);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(author, sendDate, text);
+        return Objects.hash(author.getNickname(), sendDate, text);
     }
 
     @Override

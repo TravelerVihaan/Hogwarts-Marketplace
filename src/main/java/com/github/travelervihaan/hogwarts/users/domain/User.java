@@ -1,4 +1,4 @@
-package com.github.travelervihaan.hogwarts.users;
+package com.github.travelervihaan.hogwarts.users.domain;
 
 import java.util.Objects;
 import java.util.Set;
