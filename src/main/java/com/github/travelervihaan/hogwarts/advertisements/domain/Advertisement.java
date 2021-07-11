@@ -11,6 +11,7 @@ public class Advertisement {
     private final LocalDateTime sendDate;
     private final AdvertisementType advertisementType;
     private final String text;
+
     private LocalDateTime lastActivityDate;
     private List<Comment> comments;
     // TODO Edit history storage
