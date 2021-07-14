@@ -3,7 +3,7 @@ package com.github.travelervihaan.hogwarts.advertisements.domain;
 import com.github.travelervihaan.hogwarts.users.domain.User;
 
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.*;
 
 public class Advertisement {
 
@@ -11,27 +11,32 @@ public class Advertisement {
     private final LocalDateTime sendDate;
     private final AdvertisementType advertisementType;
     private final String text;
-
+    private final Set<Vote> votes;
     private LocalDateTime lastActivityDate;
-    private List<Comment> comments;
+    private final List<Comment> comments;
     // TODO Edit history storage
 
 
-    public Advertisement(User author, LocalDateTime sendDate, AdvertisementType advertisementType, String text) {
+    public Advertisement(User author, LocalDateTime sendDate,
+                         AdvertisementType advertisementType, String text) {
         this.author = author;
         this.sendDate = sendDate;
         this.advertisementType = advertisementType;
         this.text = text;
         this.lastActivityDate = sendDate;
+        this.comments = new ArrayList<>();
+        this.votes = new HashSet<>();
     }
 
-    public Advertisement(User author, LocalDateTime sendDate, AdvertisementType advertisementType, String text, LocalDateTime lastActivityDate, List<Comment> comments) {
+    public Advertisement(User author, LocalDateTime sendDate,
+                         AdvertisementType advertisementType, String text, LocalDateTime lastActivityDate, List<Comment> comments, Set<Vote> votes) {
         this.author = author;
         this.sendDate = sendDate;
         this.advertisementType = advertisementType;
         this.text = text;
         this.lastActivityDate = lastActivityDate;
         this.comments = comments;
+        this.votes = votes;
     }
 
     public User getAuthor() {
@@ -62,8 +67,21 @@ public class Advertisement {
         this.lastActivityDate = lastActivityDate;
     }
 
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
+    public Set<Vote> getVotes() {
+        return votes;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Advertisement that = (Advertisement) o;
+        return Objects.equals(sendDate, that.sendDate) && advertisementType == that.advertisementType && Objects.equals(text, that.text) && Objects.equals(votes, that.votes);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(sendDate, advertisementType, text, votes);
     }
 
     @Override
@@ -73,6 +91,7 @@ public class Advertisement {
                 ", sendDate=" + sendDate +
                 ", advertisementType=" + advertisementType +
                 ", text='" + text + '\'' +
+                ", votes=" + votes +
                 ", lastActivityDate=" + lastActivityDate +
                 ", comments=" + comments +
                 '}';
