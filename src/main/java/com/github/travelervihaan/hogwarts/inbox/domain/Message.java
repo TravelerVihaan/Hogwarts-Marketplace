@@ -1,9 +1,11 @@
 package com.github.travelervihaan.hogwarts.inbox.domain;
 
+import com.github.travelervihaan.hogwarts.advertisements.domain.Vote;
 import com.github.travelervihaan.hogwarts.users.domain.User;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
+import java.util.Set;
 
 public class Message {
 
@@ -11,12 +13,14 @@ public class Message {
     private final User from;
     private final User to;
     private final String text;
+    private final Set<Vote> votes;
 
-    public Message(LocalDateTime sentDate, User from, User to, String text) {
+    public Message(LocalDateTime sentDate, User from, User to, String text, Set<Vote> votes) {
         this.sentDate = sentDate;
         this.from = from;
         this.to = to;
         this.text = text;
+        this.votes = votes;
     }
 
     public LocalDateTime getSentDate() {
@@ -33,6 +37,10 @@ public class Message {
 
     public String getText() {
         return text;
+    }
+
+    public Set<Vote> getVotes() {
+        return votes;
     }
 
     @Override
