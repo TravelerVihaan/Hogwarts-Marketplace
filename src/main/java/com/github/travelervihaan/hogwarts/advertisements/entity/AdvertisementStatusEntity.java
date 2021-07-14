@@ -18,7 +18,6 @@ public class AdvertisementStatusEntity {
     @Column(name = "id_adv_status")
     private Long id;
 
-    @NotEmpty
     @Column(name = "adv_status", nullable = false, unique = true)
     private String advertisementStatus;
 

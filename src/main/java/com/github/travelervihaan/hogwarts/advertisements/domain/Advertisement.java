@@ -8,7 +8,7 @@ import java.util.*;
 public class Advertisement {
 
     private final User author;
-    private final LocalDateTime sendDate;
+    private final LocalDateTime createdDate;
     private final AdvertisementType advertisementType;
     private final String text;
     private final Set<Vote> votes;
@@ -17,21 +17,21 @@ public class Advertisement {
     // TODO Edit history storage
 
 
-    public Advertisement(User author, LocalDateTime sendDate,
+    public Advertisement(User author, LocalDateTime createdDate,
                          AdvertisementType advertisementType, String text) {
         this.author = author;
-        this.sendDate = sendDate;
+        this.createdDate = createdDate;
         this.advertisementType = advertisementType;
         this.text = text;
-        this.lastActivityDate = sendDate;
+        this.lastActivityDate = createdDate;
         this.comments = new ArrayList<>();
         this.votes = new HashSet<>();
     }
 
-    public Advertisement(User author, LocalDateTime sendDate,
+    public Advertisement(User author, LocalDateTime createdDate,
                          AdvertisementType advertisementType, String text, LocalDateTime lastActivityDate, List<Comment> comments, Set<Vote> votes) {
         this.author = author;
-        this.sendDate = sendDate;
+        this.createdDate = createdDate;
         this.advertisementType = advertisementType;
         this.text = text;
         this.lastActivityDate = lastActivityDate;
@@ -43,8 +43,8 @@ public class Advertisement {
         return author;
     }
 
-    public LocalDateTime getSendDate() {
-        return sendDate;
+    public LocalDateTime getCreatedDate() {
+        return createdDate;
     }
 
     public AdvertisementType getAdvertisementType() {
@@ -76,19 +76,19 @@ public class Advertisement {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Advertisement that = (Advertisement) o;
-        return Objects.equals(sendDate, that.sendDate) && advertisementType == that.advertisementType && Objects.equals(text, that.text) && Objects.equals(votes, that.votes);
+        return Objects.equals(createdDate, that.createdDate) && advertisementType == that.advertisementType && Objects.equals(text, that.text) && Objects.equals(votes, that.votes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(sendDate, advertisementType, text, votes);
+        return Objects.hash(createdDate, advertisementType, text, votes);
     }
 
     @Override
     public String toString() {
         return "Advertisement{" +
                 "author=" + author +
-                ", sendDate=" + sendDate +
+                ", sendDate=" + createdDate +
                 ", advertisementType=" + advertisementType +
                 ", text='" + text + '\'' +
                 ", votes=" + votes +
