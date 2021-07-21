@@ -17,6 +17,6 @@ public class AdvertisementsCleaner {
 
     @Scheduled(cron = "0 0 1 * * *")
     public void cleanInactiveAdvertisements(){
-        advertisementRepository.fin
+//        advertisementRepository
     }
 }

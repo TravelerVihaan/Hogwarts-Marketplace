@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 
 @Service
-public class AdvertisementManager {
+public class AdvertisementPublisher {
 
     public Advertisement createNewAdvertisement(User author, LocalDateTime sendDate, AdvertisementType advertisementType, String text){
         Advertisement advertisement = new Advertisement(author, sendDate, advertisementType, text);
