@@ -1,4 +1,4 @@
-package com.github.travelervihaan.hogwarts.advertisements.entity;
+package com.github.travelervihaan.hogwarts.advertisements.dao;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -6,7 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
 import java.util.Objects;
 
 @Entity

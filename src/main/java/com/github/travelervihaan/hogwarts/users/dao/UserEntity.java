@@ -1,4 +1,4 @@
-package com.github.travelervihaan.hogwarts.users.entity;
+package com.github.travelervihaan.hogwarts.users.dao;
 
 import javax.persistence.*;
 import java.util.Objects;

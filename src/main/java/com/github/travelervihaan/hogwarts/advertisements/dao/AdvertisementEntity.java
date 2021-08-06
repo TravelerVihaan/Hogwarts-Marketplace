@@ -1,6 +1,6 @@
-package com.github.travelervihaan.hogwarts.advertisements.entity;
+package com.github.travelervihaan.hogwarts.advertisements.dao;
 
-import com.github.travelervihaan.hogwarts.users.entity.UserEntity;
+import com.github.travelervihaan.hogwarts.users.dao.UserEntity;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

@@ -1,6 +1,6 @@
-package com.github.travelervihaan.hogwarts.inbox.entity;
+package com.github.travelervihaan.hogwarts.inbox.dao;
 
-import com.github.travelervihaan.hogwarts.users.entity.UserEntity;
+import com.github.travelervihaan.hogwarts.users.dao.UserEntity;
 
 import javax.persistence.*;
 import javax.validation.constraints.PastOrPresent;

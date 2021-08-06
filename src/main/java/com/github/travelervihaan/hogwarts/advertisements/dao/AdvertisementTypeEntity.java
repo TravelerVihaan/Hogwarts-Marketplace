@@ -1,4 +1,4 @@
-package com.github.travelervihaan.hogwarts.advertisements.entity;
+package com.github.travelervihaan.hogwarts.advertisements.dao;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

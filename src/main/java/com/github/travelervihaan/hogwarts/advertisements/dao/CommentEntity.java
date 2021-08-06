@@ -1,4 +1,4 @@
-package com.github.travelervihaan.hogwarts.advertisements.entity;
+package com.github.travelervihaan.hogwarts.advertisements.dao;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +13,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "comments")
-public class CommentEntity {
+class CommentEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

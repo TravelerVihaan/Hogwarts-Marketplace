@@ -1,9 +1,9 @@
-package com.github.travelervihaan.hogwarts.inbox.repository;
+package com.github.travelervihaan.hogwarts.inbox.dao;
 
 import com.github.travelervihaan.hogwarts.inbox.domain.Message;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface MessageRepository extends JpaRepository<Message, Long> {
+interface MessageRepository extends JpaRepository<Message, Long> {
 }
