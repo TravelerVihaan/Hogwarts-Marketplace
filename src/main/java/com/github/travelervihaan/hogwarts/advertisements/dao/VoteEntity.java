@@ -1,6 +1,7 @@
 package com.github.travelervihaan.hogwarts.advertisements.dao;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "votes")
@@ -11,8 +12,13 @@ class VoteEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Integer value;
-    // TODO
-    // relation with adv - many to many
+    @ManyToMany(fetch=FetchType.LAZY)
+    @JoinTable(
+            name = "advertisements_votes",
+            joinColumns = @JoinColumn(name = "vote_id"),
+            inverseJoinColumns = @JoinColumn(name = "advertisement_id"))
+    private Set<AdvertisementEntity> advertisements;
+
     // relation with user who casted vote - many to many(?)
 
     public VoteEntity() {}

@@ -1,13 +1,9 @@
 package com.github.travelervihaan.hogwarts.advertisements.dao;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "advertisement_types")
@@ -22,8 +18,10 @@ public class AdvertisementTypeEntity {
     @Column(name = "adv_type", nullable = false, unique = true)
     private String advertisementType;
 
-    public AdvertisementTypeEntity(){}
+    @OneToMany(mappedBy = "advertisementType")
+    private Set<AdvertisementEntity> advertisements;
 
+    public AdvertisementTypeEntity(){}
     public AdvertisementTypeEntity(String advertisementType) {
         this.advertisementType = advertisementType;
     }
@@ -42,6 +40,14 @@ public class AdvertisementTypeEntity {
 
     public void setAdvertisementType(String advertisementType) {
         this.advertisementType = advertisementType;
+    }
+
+    public Set<AdvertisementEntity> getAdvertisements() {
+        return advertisements;
+    }
+
+    public void setAdvertisements(Set<AdvertisementEntity> advertisements) {
+        this.advertisements = advertisements;
     }
 
     @Override

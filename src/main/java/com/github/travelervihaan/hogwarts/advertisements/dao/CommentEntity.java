@@ -1,11 +1,6 @@
 package com.github.travelervihaan.hogwarts.advertisements.dao;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
@@ -28,10 +23,17 @@ class CommentEntity {
     @Column(nullable = false)
     private String text;
 
+    @ManyToOne
+    @JoinColumn(name = "advertisement_id")
+    private AdvertisementEntity advertisement;
+
     public CommentEntity(){}
-    public CommentEntity(LocalDateTime sendDate, String text) {
+    public CommentEntity(Long id, LocalDateTime sendDate, String text,
+                         AdvertisementEntity advertisement) {
+        this.id = id;
         this.sendDate = sendDate;
         this.text = text;
+        this.advertisement = advertisement;
     }
 
     public Long getId() {
@@ -56,6 +58,14 @@ class CommentEntity {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public AdvertisementEntity getAdvertisement() {
+        return advertisement;
+    }
+
+    public void setAdvertisement(AdvertisementEntity advertisement) {
+        this.advertisement = advertisement;
     }
 
     @Override

@@ -3,13 +3,14 @@ package com.github.travelervihaan.hogwarts.advertisements.dao;
 import com.github.travelervihaan.hogwarts.users.dao.UserEntity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(name = "advertisement")
+@Table(name = "advertisements")
 public class AdvertisementEntity {
 
     @Id
@@ -18,11 +19,19 @@ public class AdvertisementEntity {
     private Long id;
 
     private LocalDateTime createdDate;
+    @Column(name = "advertisement_text", nullable = false)
     private String text;
-    private AdvertisementTypeEntity advertisementTypeEntity;
-    private AdvertisementStatusEntity advertisementStatusEntity;
+    @ManyToOne
+    @JoinColumn(name = "advertisement_type_id")
+    private AdvertisementTypeEntity advertisementType;
+    @ManyToOne
+    @JoinColumn(name = "advertisement_status_id")
+    private AdvertisementStatusEntity advertisementStatus;
+    @OneToMany(mappedBy = "advertisement", cascade = CascadeType.REMOVE)
     private List<CommentEntity> comments;
+    @ManyToOne
     private UserEntity author;
+
     private Set<VoteEntity> votes;
 
     public AdvertisementEntity() { }
