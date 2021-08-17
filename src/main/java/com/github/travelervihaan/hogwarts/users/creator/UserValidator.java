@@ -1,12 +1,18 @@
 package com.github.travelervihaan.hogwarts.users.creator;
 
-import com.github.travelervihaan.hogwarts.users.domain.User;
+import com.github.travelervihaan.hogwarts.validation.IValidator;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-@Service
-public class UserValidator {
+import java.util.Set;
 
-    boolean validate(User user){
-        return true;
+@Service
+@Qualifier("userValidator")
+public class UserValidator implements IValidator {
+
+    @Override
+    public <T> Set<String> validate(T objectToValidate) {
+        Set<String> validationMessages = basicValidate(objectToValidate);
+        return validationMessages;
     }
 }

@@ -3,6 +3,7 @@ package com.github.travelervihaan.hogwarts.users.creator;
 import com.github.travelervihaan.hogwarts.users.domain.User;
 import com.github.travelervihaan.hogwarts.users.domain.UserRole;
 import com.github.travelervihaan.hogwarts.users.domain.UserStatus;
+import com.github.travelervihaan.hogwarts.validation.IValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,10 +12,10 @@ import java.util.Set;
 @Service
 public class UserCreator {
 
-    private final UserValidator userValidator;
+    private final IValidator userValidator;
 
     @Autowired
-    public UserCreator(UserValidator userValidator) {
+    public UserCreator(IValidator userValidator) {
         this.userValidator = userValidator;
     }
 
@@ -22,7 +23,6 @@ public class UserCreator {
         User user = new User(login, password, email, nickname);
         user.setUserRole(Set.of(UserRole.NEW_USER));
         user.setUserStatus(UserStatus.UNCONFIRMED);
-        boolean isValid = userValidator.validate(user);
 
         return user;
     }
