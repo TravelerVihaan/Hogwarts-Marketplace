@@ -1,5 +1,7 @@
 package com.github.travelervihaan.hogwarts.users.domain;
 
+import org.springframework.security.core.userdetails.UserDetails;
+
 import java.util.Objects;
 import java.util.Set;
 
@@ -9,16 +11,14 @@ public class User {
     private final String password;
     private final String email;
     private final String nickname;
-    private final UserDetails userDetails;
     private UserStatus userStatus;
     private Set<UserRole> userRole;
 
-    public User(String login, String password, String email, String nickname, UserDetails userDetails) {
+    public User(String login, String password, String email, String nickname) {
         this.login = login;
         this.password = password;
         this.email = email;
         this.nickname = nickname;
-        this.userDetails = userDetails;
         this.userStatus = UserStatus.UNCONFIRMED;
     }
 
@@ -27,7 +27,6 @@ public class User {
         this.password = password;
         this.email = email;
         this.nickname = nickname;
-        this.userDetails = userDetails;
         this.userStatus = userStatus;
         this.userRole = userRole;
     }
@@ -46,10 +45,6 @@ public class User {
 
     public String getNickname() {
         return nickname;
-    }
-
-    public UserDetails getUserDetails() {
-        return userDetails;
     }
 
     public UserStatus getUserStatus() {
@@ -87,7 +82,6 @@ public class User {
                 "login='" + login + '\'' +
                 ", email='" + email + '\'' +
                 ", nickname='" + nickname + '\'' +
-                ", userDetails=" + userDetails +
                 ", userStatus=" + userStatus +
                 ", userRole=" + userRole +
                 '}';
