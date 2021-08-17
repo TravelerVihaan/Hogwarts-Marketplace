@@ -1,7 +1,5 @@
 package com.github.travelervihaan.hogwarts.users.domain;
 
-import org.springframework.security.core.userdetails.UserDetails;
-
 import java.util.Objects;
 import java.util.Set;
 
@@ -22,7 +20,7 @@ public class User {
         this.userStatus = UserStatus.UNCONFIRMED;
     }
 
-    public User(String login, String password, String email, String nickname, UserDetails userDetails, UserStatus userStatus, Set<UserRole> userRole) {
+    public User(String login, String password, String email, String nickname, UserStatus userStatus, Set<UserRole> userRole) {
         this.login = login;
         this.password = password;
         this.email = email;
