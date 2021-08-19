@@ -1,7 +1,6 @@
 package com.github.travelervihaan.hogwarts.users.domain;
 
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class User {
 
@@ -10,7 +9,8 @@ public class User {
     private final String email;
     private final String nickname;
     private UserStatus userStatus;
-    private Set<UserRole> userRole;
+    private final Set<UserRole> userRoles;
+    private final List<Penalty> penalties;
 
     public User(String login, String password, String email, String nickname) {
         this.login = login;
@@ -18,15 +18,19 @@ public class User {
         this.email = email;
         this.nickname = nickname;
         this.userStatus = UserStatus.UNCONFIRMED;
+        userRoles = new HashSet<>();
+        userRoles.add(UserRole.NEW_USER);
+        penalties = new ArrayList<>();
     }
 
-    public User(String login, String password, String email, String nickname, UserStatus userStatus, Set<UserRole> userRole) {
+    public User(String login, String password, String email, String nickname, UserStatus userStatus, Set<UserRole> userRole, List<Penalty> penalties) {
         this.login = login;
         this.password = password;
         this.email = email;
         this.nickname = nickname;
         this.userStatus = userStatus;
-        this.userRole = userRole;
+        this.userRoles = userRole;
+        this.penalties = penalties;
     }
 
     public String getLogin() {
@@ -49,16 +53,16 @@ public class User {
         return userStatus;
     }
 
-    public Set<UserRole> getUserRole() {
-        return userRole;
+    public Set<UserRole> getUserRoles() {
+        return userRoles;
     }
 
     public void setUserStatus(UserStatus userStatus) {
         this.userStatus = userStatus;
     }
 
-    public void setUserRole(Set<UserRole> userRole) {
-        this.userRole = userRole;
+    public List<Penalty> getPenalties() {
+        return penalties;
     }
 
     @Override
@@ -66,12 +70,12 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(login, user.login) && Objects.equals(email, user.email) && Objects.equals(nickname, user.nickname) && userStatus == user.userStatus && Objects.equals(userRole, user.userRole);
+        return Objects.equals(login, user.login) && Objects.equals(email, user.email) && Objects.equals(nickname, user.nickname) && userStatus == user.userStatus && Objects.equals(userRoles, user.userRoles);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(login, email, nickname, userStatus, userRole);
+        return Objects.hash(login, email, nickname, userStatus, userRoles);
     }
 
     @Override
@@ -81,7 +85,7 @@ public class User {
                 ", email='" + email + '\'' +
                 ", nickname='" + nickname + '\'' +
                 ", userStatus=" + userStatus +
-                ", userRole=" + userRole +
+                ", userRole=" + userRoles +
                 '}';
     }
 }

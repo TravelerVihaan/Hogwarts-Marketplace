@@ -21,7 +21,6 @@ public class UserCreator {
 
     User createUser(String login, String password, String email, String nickname){
         User user = new User(login, password, email, nickname);
-        user.setUserRole(Set.of(UserRole.NEW_USER));
         user.setUserStatus(UserStatus.UNCONFIRMED);
 
         return user;
