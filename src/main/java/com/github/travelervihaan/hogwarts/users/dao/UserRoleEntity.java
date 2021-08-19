@@ -2,6 +2,7 @@ package com.github.travelervihaan.hogwarts.users.dao;
 
 import javax.persistence.*;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "user_roles")
@@ -13,6 +14,8 @@ public class UserRoleEntity {
     private Long id;
     @Column(name = "role_name", nullable = false, unique = true)
     private String roleName;
+    @ManyToMany(mappedBy = "roles")
+    private Set<UserEntity> users;
 
     public UserRoleEntity() {
     }

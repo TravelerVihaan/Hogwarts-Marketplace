@@ -6,13 +6,14 @@ import com.github.travelervihaan.hogwarts.users.domain.User;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Service
 public class AdvertisementPublisher {
 
-    public Advertisement createNewAdvertisement(User author, LocalDateTime sendDate, AdvertisementType advertisementType, String text){
+    public Optional<Advertisement> createNewAdvertisement(User author, LocalDateTime sendDate, AdvertisementType advertisementType, String text){
         Advertisement advertisement = new Advertisement(author, sendDate, advertisementType, text);
-        return advertisement;
+        return Optional.of(advertisement);
     }
 
 

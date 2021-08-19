@@ -9,7 +9,6 @@ public class UserDTO {
     private String password;
     private String email;
     private String nickname;
-    private long userDetailsId;
     private List<Integer> userRoles;
 
     public UserDTO(){}
@@ -18,7 +17,6 @@ public class UserDTO {
         this.password = password;
         this.email = email;
         this.nickname = nickname;
-        this.userDetailsId = userDetailsId;
         this.userRoles = userRoles;
     }
 
@@ -52,14 +50,6 @@ public class UserDTO {
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
-    }
-
-    public long getUserDetailsId() {
-        return userDetailsId;
-    }
-
-    public void setUserDetailsId(long userDetailsId) {
-        this.userDetailsId = userDetailsId;
     }
 
     public List<Integer> getUserRoles() {

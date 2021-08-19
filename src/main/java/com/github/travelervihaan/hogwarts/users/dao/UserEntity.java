@@ -21,8 +21,13 @@ public class UserEntity {
     @Column(nullable = false, unique = true)
     private String nickname;
     @ManyToOne
+    @JoinColumn(name = "user_status_id")
     private UserStatusEntity userStatus;
     @ManyToMany
+    @JoinTable(
+            name = "user_role",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<UserRoleEntity> roles;
 
     public UserEntity() { }

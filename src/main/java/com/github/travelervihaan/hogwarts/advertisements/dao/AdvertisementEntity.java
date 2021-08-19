@@ -31,21 +31,24 @@ public class AdvertisementEntity {
     private List<CommentEntity> comments;
     @ManyToOne
     private UserEntity author;
-
+    @ManyToMany(fetch=FetchType.LAZY)
+    @JoinTable(
+            name = "advertisement_vote",
+            joinColumns = @JoinColumn(name = "advertisement_id"),
+            inverseJoinColumns = @JoinColumn(name = "vote_id"))
     private Set<VoteEntity> votes;
 
     public AdvertisementEntity() { }
-
     public AdvertisementEntity(Long id, LocalDateTime createdDate,
-                               String text, AdvertisementTypeEntity advertisementTypeEntity,
-                               AdvertisementStatusEntity advertisementStatusEntity,
+                               String text, AdvertisementTypeEntity advertisementType,
+                               AdvertisementStatusEntity advertisementStatus,
                                List<CommentEntity> comments, UserEntity author,
                                Set<VoteEntity> votes) {
         this.id = id;
         this.createdDate = createdDate;
         this.text = text;
-        this.advertisementTypeEntity = advertisementTypeEntity;
-        this.advertisementStatusEntity = advertisementStatusEntity;
+        this.advertisementType = advertisementType;
+        this.advertisementStatus = advertisementStatus;
         this.comments = comments;
         this.author = author;
         this.votes = votes;
@@ -75,20 +78,20 @@ public class AdvertisementEntity {
         this.text = text;
     }
 
-    public AdvertisementTypeEntity getAdvertisementTypeEntity() {
-        return advertisementTypeEntity;
+    public AdvertisementTypeEntity getAdvertisementType() {
+        return advertisementType;
     }
 
-    public void setAdvertisementTypeEntity(AdvertisementTypeEntity advertisementTypeEntity) {
-        this.advertisementTypeEntity = advertisementTypeEntity;
+    public void setAdvertisementType(AdvertisementTypeEntity advertisementType) {
+        this.advertisementType = advertisementType;
     }
 
-    public AdvertisementStatusEntity getAdvertisementStatusEntity() {
-        return advertisementStatusEntity;
+    public AdvertisementStatusEntity getAdvertisementStatus() {
+        return advertisementStatus;
     }
 
-    public void setAdvertisementStatusEntity(AdvertisementStatusEntity advertisementStatusEntity) {
-        this.advertisementStatusEntity = advertisementStatusEntity;
+    public void setAdvertisementStatus(AdvertisementStatusEntity advertisementStatus) {
+        this.advertisementStatus = advertisementStatus;
     }
 
     public List<CommentEntity> getComments() {
@@ -115,16 +118,6 @@ public class AdvertisementEntity {
         this.votes = votes;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        AdvertisementEntity that = (AdvertisementEntity) o;
-        return Objects.equals(createdDate, that.createdDate) && Objects.equals(text, that.text) && Objects.equals(advertisementTypeEntity, that.advertisementTypeEntity);
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(createdDate, text, advertisementTypeEntity);
-    }
+
 }
